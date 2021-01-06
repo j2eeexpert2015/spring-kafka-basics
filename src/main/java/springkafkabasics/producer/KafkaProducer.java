@@ -5,7 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.kafka.support.SendResult;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
@@ -55,15 +58,14 @@ public class KafkaProducer {
 	    });
 	}
 	
-	/*
-	public boolean sendMessage(Container containerMsg) {
-	    Message<Container> message = MessageBuilder
-	            .withPayload(containerMsg)
-	            .setHeader(KafkaHeaders.TOPIC, "test_topic")
+	
+	public void sendCustomizedMessage(String message) {
+	    Message<String> customMessage = MessageBuilder
+	            .withPayload(message)
+	            .setHeader(KafkaHeaders.TOPIC, topicName)
 	            .setHeader(KafkaHeaders.PARTITION_ID, 1)
 	            .build();
-	    this.kafkaTemplate.send(message);
+	    this.kafkaTemplate.send(customMessage);
 	}
-	*/
 
 }
