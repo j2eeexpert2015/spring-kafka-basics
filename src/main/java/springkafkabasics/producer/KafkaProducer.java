@@ -27,7 +27,7 @@ public class KafkaProducer {
 
 	public void sendMessage(String msg) {
 	    kafkaTemplate.send(topicName, msg,topicName);
-	    logger.info("message {} sent to topic {}",msg,topicName);
+	    logger.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  message {} sent to topic {}",msg,topicName);
 	    
 	}
 	
@@ -48,5 +48,16 @@ public class KafkaProducer {
 	        }
 	    });
 	}
+	
+	/*
+	public boolean sendMessage(Container containerMsg) {
+	    Message<Container> message = MessageBuilder
+	            .withPayload(containerMsg)
+	            .setHeader(KafkaHeaders.TOPIC, "test_topic")
+	            .setHeader(KafkaHeaders.PARTITION_ID, 1)
+	            .build();
+	    this.kafkaTemplate.send(message);
+	}
+	*/
 
 }

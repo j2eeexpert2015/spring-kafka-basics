@@ -31,8 +31,14 @@ public class KafkaProducerConfig {
 	   configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress); 
 	   configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class); 
 	   configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class); 
-	   //configProps.put(ProducerConfig.ACKS_CONFIG, "all"); 
-	   //configProps.put(ProducerConfig.CLIENT_ID_CONFIG, "cid1"); 
+	   /*
+	   configProps.put(ProducerConfig.ACKS_CONFIG, "all"); 
+	   configProps.put(ProducerConfig.CLIENT_ID_CONFIG, "cid1"); 
+	   configProps.put(ProducerConfig.RETRIES_CONFIG, 0);
+	   configProps.put(ProducerConfig.BATCH_SIZE_CONFIG, 1000);
+	   configProps.put(ProducerConfig.LINGER_MS_CONFIG, 1);
+	   configProps.put(ProducerConfig.BUFFER_MEMORY_CONFIG, 33554432);
+	   */
 	   configProps.put("sasl.mechanism", SCRAM_SHA_256); 
 	   configProps.put("sasl.jaas.config", prodJaasCfg); 
 	   configProps.put("security.protocol", SASL_PROTOCOL); 
