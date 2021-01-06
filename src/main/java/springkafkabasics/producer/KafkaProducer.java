@@ -26,7 +26,7 @@ public class KafkaProducer {
     }
 
 	public void sendMessage(String msg) {
-	    kafkaTemplate.send(topicName, msg,topicName);
+	    kafkaTemplate.send(topicName, msg);
 	    logger.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  message {} sent to topic {}",msg,topicName);
 	    
 	}
@@ -40,7 +40,7 @@ public class KafkaProducer {
 
 	        @Override
 	        public void onSuccess(SendResult<String, String> result) {
-	        	logger.info("Sent message=[{}] with offset=[{}]",message,result.getRecordMetadata().offset());
+	        	logger.info("Sent message=[{}] with offset=[{}] to partition {} ",message,result.getRecordMetadata().offset(),result.getRecordMetadata().partition());
 	        }
 	        @Override
 	        public void onFailure(Throwable ex) {
