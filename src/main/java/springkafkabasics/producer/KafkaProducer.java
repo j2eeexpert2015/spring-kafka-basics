@@ -58,7 +58,11 @@ public class KafkaProducer {
 	    });
 	}
 	
-	
+	/**
+	 * Payload : the message to be pushed to Kafka broker
+	 * Topic : the topic name where sent message will be stored in Kafka broker
+	 * Partition_ID : if given topic have multiple partition sender has to mention the partition id of the topic.
+	 */
 	public void sendCustomizedMessage(String message) {
 	    Message<String> customMessage = MessageBuilder
 	            .withPayload(message)
