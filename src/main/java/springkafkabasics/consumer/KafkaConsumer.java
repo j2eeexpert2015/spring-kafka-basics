@@ -18,9 +18,16 @@ import org.springframework.stereotype.Component;
 public class KafkaConsumer {
 	
 	
-	@KafkaListener(topics = "${target.topic}", groupId="${spring.kafka.consumer.group-id}")
+	//@KafkaListener(topics = "${target.topic}", groupId="${spring.kafka.consumer.group-id}")
+	@KafkaListener(topics = "${target.topic}", groupId="${spring.kafka.consumer.group-id}",containerFactory="kafkaListenerContainerFactory")
+	//@KafkaListener(topics = "${target.topic}", groupId="${spring.kafka.consumer.group-id}",containerFactory="secondaryKafkaListenerContainerFactory")
     public void consume(String message) {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  Consumed message: " + message);
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  Consumed message with consumerFactory: " + message);
+    }
+	
+	@KafkaListener(topics = "${target.topic}", groupId="${spring.kafka.consumer.group-id}",containerFactory="secondaryKafkaListenerContainerFactory")
+    public void consumeSecondary(String message) {
+        System.out.println("*****  Consumed message with secondary consumerFactory: " + message);
     }
 
 }

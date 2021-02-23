@@ -25,8 +25,8 @@ public class SpringKafkaSampleApp implements CommandLineRunner
 
 			@Override
 			public void run(String... args) throws Exception {
-				//kafkaProducer.sendMessage("test");
-				//kafkaProducer.sendMessageWithCallback("message for callback ");
+				kafkaProducer.sendMessage("test");
+				kafkaProducer.sendMessageWithCallback("message for callback ");
 				kafkaProducer.sendCustomizedMessage("Custom message");
 				
 			}
